@@ -18,8 +18,7 @@ jobs:
         uses: docker/build-push-action@v1
         with:
           dockerfile: Dockerfile.${{ matrix.image-name }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-          registry: docker.pkg.github.com
-          repository: ganeti/ci-images/${{ matrix.image-name }}
-          tag_with_ref: true
+          tags: ${{ matrix.image-name }}-py3
+          username: apoikos
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: ganeti/ci
