@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 jobs:
   push_to_registry:
-    name: Push ${{ matrix.image-name }} image to GitHub Packages
+    name: Push ${{ matrix.image-name }} image to Docker Hub
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
-      - name: Build and push to GitHub Packages
+      - name: Build and push to Docker Hub
         uses: docker/build-push-action@v1
         with:
           dockerfile: Dockerfile.${{ matrix.image-name }}
