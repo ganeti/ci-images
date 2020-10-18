@@ -3,6 +3,10 @@ ARG         DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get -y dist-upgrade
 
+RUN apt-get install --yes --no-install-recommends locales && \
+    sed -i -e "s/^#\s*en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/" /etc/locale.gen && \
+    locale-gen
+
 RUN apt-get update && apt-get install --yes --no-install-recommends \
   adduser \
   build-essential \
