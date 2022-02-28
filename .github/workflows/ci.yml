@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image-name: [bionic, buster, focal, debian-testing]
+        image-name: [bionic, bullseye, buster, focal, debian-testing]
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
