@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM debian:bookworm
 ARG         DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get -y dist-upgrade
@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
   build-essential \
   automake \
   pandoc \
-  python-all \
+  python3-all \
   git \
   ghc \
   ghc-ghci \
@@ -38,8 +38,6 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
   libghc-test-framework-hunit-dev \
   libghc-temporary-dev \
   libghc-old-time-dev \
-  libpcre3-dev \
-  libcurl4-openssl-dev \
   python3-bitarray \
   python3-mock \
   python3-openssl \
