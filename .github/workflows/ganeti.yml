@@ -1,4 +1,4 @@
-name: Publish CI Docker images
+name: Publish Ganeti CI Docker images
 on:
   push:
     branches: [master]
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 jobs:
   push_to_registry:
-    name: Push ${{ matrix.image-name }} image to Docker Hub
+    name: Push ${{ matrix.image-name }}-py3 image to Docker Hub
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -19,7 +19,7 @@ jobs:
       - name: Build and push to Docker Hub
         uses: docker/build-push-action@v1
         with:
-          dockerfile: Dockerfile.${{ matrix.image-name }}
+          dockerfile: ganeti/Dockerfile.${{ matrix.image-name }}
           tags: ${{ matrix.image-name }}-py3
           username: apoikos
           password: ${{ secrets.DOCKERHUB_TOKEN }}

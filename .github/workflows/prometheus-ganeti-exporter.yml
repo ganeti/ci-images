@@ -1,0 +1,26 @@
+name: Publish prometheus-ganeti-exporter CI Docker images
+on:
+  push:
+    branches: [master]
+  schedule:
+    - cron: "42 1 * * 4"
+  workflow_dispatch:
+jobs:
+  push_to_registry:
+    name: Push ${{ matrix.image-name }}-prometheus-ganeti-exporter image to Docker Hub
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        image-name: [bookworm, debian-testing]
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Build and push to Docker Hub
+        uses: docker/build-push-action@v1
+        with:
+          dockerfile: prometheus-ganeti-exporter/Dockerfile.${{ matrix.image-name }}
+          tags: ${{ matrix.image-name }}-prometheus-ganeti-exporter
+          username: apoikos
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: ganeti/ci
