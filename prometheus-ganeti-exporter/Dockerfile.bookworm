@@ -1,0 +1,12 @@
+FROM debian:bookworm
+ARG         DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get -y dist-upgrade
+
+RUN apt-get update && apt-get install --yes --no-install-recommends \
+  python3 \
+  pylint \
+  python3-requests \
+  python3-prometheus-client && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+
