@@ -50,6 +50,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
   python3-simplejson \
   python3-sphinx \
   python3-yaml \
+  python3-pip \
   graphviz \
   openssh-client \
   procps \
