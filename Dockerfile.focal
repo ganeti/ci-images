@@ -40,6 +40,8 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
   libghc-old-time-dev \
   libpcre3-dev \
   libcurl4-openssl-dev \
+  black \
+  pylint \
   python3-bitarray \
   python3-mock \
   python3-openssl \
