@@ -47,6 +47,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
   python3-pycurl \
   python3-pyinotify \
   python3-pyparsing \
+  python3-pytest \
   python3-simplejson \
   python3-sphinx \
   python3-yaml \
