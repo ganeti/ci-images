@@ -28,6 +28,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
   libghc-hinotify-dev \
   libghc-base64-bytestring-dev \
   libghc-zlib-dev \
+  libghc-regex-pcre2-dev \
   libghc-regex-tdfa-dev \
   libghc-attoparsec-dev \
   libghc-vector-dev \
