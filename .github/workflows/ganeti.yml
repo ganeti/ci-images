@@ -12,14 +12,18 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image-name: [bookworm, trixie, debian-testing, focal, jammy, noble, leap15.6, leap16.0]
+        image-name: [bookworm, trixie, testing, focal, jammy, noble, resolute, leap15.6, leap16.0]
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
+
+      - name: create Dockerfiles
+        run: make
+
       - name: Build and push to Docker Hub
         uses: docker/build-push-action@v1
         with:
-          dockerfile: ganeti/Dockerfile.${{ matrix.image-name }}
+          dockerfile: ganeti/generated_dockerfiles/Dockerfile.${{ matrix.image-name }}
           tags: ${{ matrix.image-name }}-py3
           username: apoikos
           password: ${{ secrets.DOCKERHUB_TOKEN }}
