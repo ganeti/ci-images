@@ -9,6 +9,7 @@ case ${RELEASE} in
 		;;
 	15.6)
 		PYTEST="pytest-3.6"
+		ZYPPER_INSTALL_OPTS="--force-resolution"
 		;;
 esac
 
@@ -25,7 +26,7 @@ FROM docker.io/opensuse/leap:${RELEASE}
 
 RUN zypper --non-interactive  addrepo --refresh obs://home:ganeti/${RELEASE} home:ganeti
 RUN zypper --non-interactive --gpg-auto-import-keys refresh && zypper --non-interactive update --no-confirm
-RUN zypper --non-interactive install --no-confirm --no-recommends \\
+RUN zypper --non-interactive install --no-confirm --no-recommends ${ZYPPER_INSTALL_OPTS:-} \\
   autoconf \\
   automake \\
   cabal-install \\
